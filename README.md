@@ -1,7 +1,5 @@
-ÿþecho "# IR_remote_mitsubishiACIndustry" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/HuyCan1605/IR_remote_mitsubishiACIndustry.git
+echo "# IR_remote_mitsubishiACIndustry" >> README.md 
+git init git add README.md 
+git commit -m "first commit" 
+git branch -M main git remote add origin https://github.com/HuyCan1605/IR_remote_mitsubishiACIndustry.git 
 git push -u origin main
