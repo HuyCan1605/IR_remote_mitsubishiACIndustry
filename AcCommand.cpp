@@ -37,10 +37,10 @@ const uint8_t kMitsubishiIndusFanHigh = 0b010;
 const uint8_t kMitsubishiIndusFanMax = 0b110;
 
 const uint8_t kMitsubishiIndusSwingAuto = 0b1100;
-const uint8_t kMitsubishiIndusSwingLow = 0b0000;
-const uint8_t kMitsubishiIndusSwingMed = 0b1000;
-const uint8_t kMitsubishiIndusSwingHigh = 0b0100;
-const uint8_t kMitsubishiIndusSwingMax = 0b1100;
+const uint8_t kMitsubishiIndusSwingLow = 0b1100;
+const uint8_t kMitsubishiIndusSwingMed = 0b0100;
+const uint8_t kMitsubishiIndusSwingHigh = 0b1000;
+const uint8_t kMitsubishiIndusSwingMax = 0b0000;
 
 const uint8_t NoN1 = 0b10000000;
 const uint8_t NoN2 = 0b00101000;
@@ -167,35 +167,35 @@ void encodeMitsubishiIR(uint32_t *result, uint8_t temp, bool swing_auto, uint8_t
     uint8_t rMode = inverseBit8(eMode);
     uint8_t rFan_mode = inverseBit8(eFan_mode);
     uint8_t rSwing_mode = inverseBit8(eSwing_mode);
-    Serial.print("eTemp: ");
-    Serial.print(String(eTemp, BIN));
-    Serial.print(" | rTemp: ");
-    Serial.print(String(rTemp, BIN));
-    Serial.println();
+    //Serial.print("eTemp: ");
+    //Serial.print(String(eTemp, BIN));
+    //Serial.print(" | rTemp: ");
+    //Serial.print(String(rTemp, BIN));
+    //Serial.println();
 
-    Serial.print("eSwing_auto: ");
-    Serial.print(String(eSwing_auto, BIN));
-    Serial.print(" | rSwing_auto: ");
-    Serial.print(String(rSwing_auto, BIN));
-    Serial.println();
+    //Serial.print("eSwing_auto: ");
+    //Serial.print(String(eSwing_auto, BIN));
+    //Serial.print(" | rSwing_auto: ");
+    //Serial.print(String(rSwing_auto, BIN));
+    //Serial.println();
 
-    Serial.print("eMode: ");
-    Serial.print(String(eMode, BIN));
-    Serial.print(" | rMode: ");
-    Serial.print(String(rMode, BIN));
-    Serial.println();
+    //Serial.print("eMode: ");
+    //Serial.print(String(eMode, BIN));
+    //Serial.print(" | rMode: ");
+    //Serial.print(String(rMode, BIN));
+    //Serial.println();
 
-    Serial.print("eFan_mode: ");
-    Serial.print(String(eFan_mode, BIN));
-    Serial.print(" | rFan_mode: ");
-    Serial.print(String(rFan_mode, BIN));
-    Serial.println();
+    //Serial.print("eFan_mode: ");
+    //Serial.print(String(eFan_mode, BIN));
+    //Serial.print(" | rFan_mode: ");
+    //Serial.print(String(rFan_mode, BIN));
+    //Serial.println();
 
-    Serial.print("eSwing_mode: ");
-    Serial.print(String(eSwing_mode, BIN));
-    Serial.print(" | rSwing_mode: ");
-    Serial.print(String(rSwing_mode, BIN));
-    Serial.println();
+    //Serial.print("eSwing_mode: ");
+    //Serial.print(String(eSwing_mode, BIN));
+    //Serial.print(" | rSwing_mode: ");
+    //Serial.print(String(rSwing_mode, BIN));
+    //Serial.println();
 
     result[0] = ((uint32_t)kMitsubishiIndusHeader << 24) 
     | ((uint32_t)eSwing_auto << 16) // 00000010
@@ -204,36 +204,36 @@ void encodeMitsubishiIR(uint32_t *result, uint8_t temp, bool swing_auto, uint8_t
     | ((uint32_t)ePower << 8)                                                // 1
     | (0b0000 << 4) 
     | (eSwing_mode);                                         // 1100
-    Serial.print("result[0]: ");
-    Serial.print(String(result[0], BIN));
-    Serial.println();
+    //Serial.print("result[0]: ");
+    //Serial.print(String(result[0], BIN));
+    //Serial.println();
 
     result[1] = inverseBit32(result[0]);
-    Serial.print("result[1]: ");
-    Serial.print(String(result[1], BIN));
-    Serial.println();
+    //Serial.print("result[1]: ");
+    //Serial.print(String(result[1], BIN));
+    //Serial.println();
 
     result[2] = ((uint32_t)eFan_mode << 29) // 100 -> 001
                 | (0b00000 << 24) 
                 | ((uint32_t)NoN1 << 16) 
                 | (NoN2 << 8) 
                 | (NoN3);
-    Serial.print("result[2]: ");
-    Serial.print(String(result[2], BIN));
-    Serial.println();
+    //Serial.print("result[2]: ");
+    //Serial.print(String(result[2], BIN));
+    //Serial.println();
 
     result[3] = inverseBit32(result[2]);
-    Serial.print("result[3]: ");
-    Serial.print(String(result[3], BIN));
-    Serial.println();
+    //Serial.print("result[3]: ");
+    //Serial.print(String(result[3], BIN));
+    //Serial.println();
 
     result[4] = ((uint32_t)NoN4 << 24) 
     | ((uint32_t)inverseBit8(NoN4) << 16) 
     | (0b00000000 << 8) 
     | (0b00000000);
-    Serial.print("result[4]: ");
-    Serial.print(String(result[4], BIN));
-    Serial.println();
+    //Serial.print("result[4]: ");
+    //Serial.print(String(result[4], BIN));
+    //Serial.println();
 }
 void convertToRawCode(uint32_t *irBit, uint16_t *result)
 {
@@ -261,13 +261,13 @@ void convertToRawCode(uint32_t *irBit, uint16_t *result)
             index++;
         }
     }
-    Serial.println();
+    //Serial.println();
     for (int i = 0; i < n; i++)
     {
-        Serial.print(result[i]);
+        //Serial.print(result[i]);
         if (i < n - 1)
         {
-            Serial.print(", ");
+            //Serial.print(", ");
         }
     }
 }
@@ -363,8 +363,8 @@ String turnRawSignalToBinary(String rawData)
         token = strtok(NULL, delimiters);
         tokenIndex++;
     }
-    Serial.println();
-    Serial.print(binaryResult);
+    //Serial.println();
+    //Serial.print(binaryResult);
     return binaryResult;  // Trả về kết quả chuỗi nhị phân
 }
 
@@ -373,7 +373,7 @@ String turnRawSignalToBinary(String rawData)
  */
 const char* returnTempForMQTT(String resultData)
 {
-  // Serial.print("Temperature: "); Serial.println(getTemp(resultData), BIN);
+  // //Serial.print("Temperature: "); //Serial.println(getTemp(resultData), BIN);
     switch (getTemp(resultData))
     {
     case kMitsubishiIndusTemp18:
@@ -409,7 +409,7 @@ const char* returnTempForMQTT(String resultData)
 
 const char* returnModeForMQTT(String resultData)
 {
-  // Serial.print("Mode: "); Serial.println(getMode(resultData), BIN);
+  // //Serial.print("Mode: "); //Serial.println(getMode(resultData), BIN);
     switch (getMode(resultData))
     {
     case kMitsubishiIndusAuto:
@@ -428,7 +428,7 @@ const char* returnModeForMQTT(String resultData)
 }
 const char* returnSwingModeForMQTT(String resultData)
 {
-  // Serial.print("Swing: "); Serial.println(getSwingMode(resultData), BIN);
+  // //Serial.print("Swing: "); //Serial.println(getSwingMode(resultData), BIN);
     switch (getSwingMode(resultData))
     {
     case kMitsubishiIndusSwingHigh:
@@ -445,7 +445,7 @@ const char* returnSwingModeForMQTT(String resultData)
 }
 const char* returnPowerForMQTT(String resultData)
 {
-  // Serial.print("Power: "); Serial.println(getPower(resultData), BIN);
+  // //Serial.print("Power: "); //Serial.println(getPower(resultData), BIN);
     switch (getPower(resultData))
     {
     case 0:
@@ -457,7 +457,7 @@ const char* returnPowerForMQTT(String resultData)
 
 const char* returnFanModeForMQTT(String resultData) 
 {
-  // Serial.print("Fan: "); Serial.println(getFanMode(resultData), BIN);
+  // //Serial.print("Fan: "); //Serial.println(getFanMode(resultData), BIN);
     switch (getFanMode(resultData))
     {
     case kMitsubishiIndusFanAuto:
