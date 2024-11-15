@@ -1,7 +1,6 @@
 #ifndef ACCOMMAND_H
 #define ACCOMMAND_H
 #include <Arduino.h>
-#include <stdint.h>
 
 #define MAX_CODE_LENGTH 325
 #define MAX_CODE_BIT_LENGTH 160
